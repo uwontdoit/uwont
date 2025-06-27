@@ -19,17 +19,20 @@
       margin: 0;
     }
     #taunt {
-      font-size: 5vw;
-      font-weight: bold;
-      margin-bottom: 2rem;
-      text-decoration: underline;
-      color: #fff;
-      cursor: pointer;
-    }
-    taunt:hover {
-      background: #fff;
-      color: #c30f0f;
-    }
+  font-size: 5vw;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-decoration: underline;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+#taunt:hover {
+  color: #ff3b3b;
+  transform: scale(1.05) rotate(-1deg);
+  text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
     button {
       background: transparent;
       border: 2px solid #fff;
