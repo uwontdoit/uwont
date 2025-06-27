@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fucking Do Something</title>
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      flex-direction: column;
+      padding: 1rem;
+      margin: 0;
+    }
+    #taunt {
+      font-size: 5vw;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      text-decoration: underline;
+      color: #fff;
+      cursor: pointer;
+    }
+    button {
+      background: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+      font-size: 1.5rem;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+    button:hover {
+      background: #fff;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+<a id="taunt" href="#" target="_blank" rel="noopener noreferrer">Loading...</a>
+<button id="nextBtn">Yeah, I won't do shit</button>
+
+<script>
+  const prompts = [
+    {
+      text: "You won't help clean the oceans plastic waste, bitch.",
+      link: "https://www.oceanconservancy.org/"
+    },
+    {
+      text: "You’d never help these wildfire survivors rebuild their homes you fucking wimp. haha do it, you won't.",
+      link: "https://globalgiving.org/projects/california-wildfire-relief-fund/"
+    },
+    {
+      text: "You? Help feed starving kids? LMAO, not a chance.",
+      link: "https://www.actionagainsthunger.org/"
+    },
+    {
+      text: "Bet you won't help save the rainforests, coward.",
+      link: "https://www.rainforesttrust.org/"
+    },
+    {
+      text: "You won’t support clean water access. Too comfy, huh?",
+      link: "https://www.charitywater.org/"
+    },
+    {
+      text: "Yeah right. Like you’d help rebuild Gaza hospitals.",
+      link: "https://www.map.org.uk/donate/donate/"
+    },
+    {
+      text: "You won’t back refugee families, tough guy.",
+      link: "https://donate.unhcr.org/"
+    },
+    {
+      text: "You think you're too cool to fight malaria? Weak.",
+      link: "https://www.againstmalaria.com/"
+    }
+  ];
+
+  const tauntEl = document.getElementById('taunt');
+  const btn = document.getElementById('nextBtn');
+
+  function randomPrompt() {
+    return prompts[Math.floor(Math.random() * prompts.length)];
+  }
+
+  function showNewPrompt() {
+    const prompt = randomPrompt();
+    tauntEl.textContent = prompt.text;
+    tauntEl.href = prompt.link;
+  }
+
+  btn.addEventListener('click', showNewPrompt);
+  window.onload = showNewPrompt;
+</script>
+
+</body>
+</html>
