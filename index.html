@@ -17,68 +17,58 @@
       flex-direction: column;
       padding: 1rem;
       margin: 0;
+      overflow: hidden;
     }
     #taunt {
-  font-size: 5vw;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  text-decoration: underline;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
+      font-size: 5vw;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      text-decoration: underline;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
 
-#taunt:hover {
-  color: #ff3b3b;
-  transform: scale(1.05) rotate(-1deg);
-  text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
-}
+    #taunt:hover {
+      color: #ff3b3b;
+      transform: scale(1.05) rotate(-1deg);
+      text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+    }
+
+    button {
+      background: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+      font-size: 1.5rem;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+    button:hover {
+      background: #fff;
+      color: #000;
+    }
+
     .explode-text {
-  position: fixed;
-  font-size: 2rem;
-  font-weight: bold;
-  pointer-events: none;
-  animation: explodeFade 1s ease-out forwards;
-  z-index: 9999;
-  white-space: nowrap;
-  user-select: none;
-}
+      position: fixed;
+      font-size: 2rem;
+      font-weight: bold;
+      pointer-events: none;
+      animation: explodeFade 1s ease-out forwards;
+      z-index: 9999;
+      white-space: nowrap;
+      user-select: none;
+    }
 
-@keyframes explodeFade {
-  0% {
-    transform: scale(0.8) rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1.5) rotate(15deg);
-    opacity: 0;
-  }
-    }
-    button {
-      background: transparent;
-      border: 2px solid #fff;
-      color: #fff;
-      font-size: 1.5rem;
-      padding: 1rem 2rem;
-      cursor: pointer;
-      transition: background 0.3s, color 0.3s;
-    }
-    button:hover {
-      background: #fff;
-      color: #000;
-    }
-    button {
-      background: transparent;
-      border: 2px solid #fff;
-      color: #fff;
-      font-size: 1.5rem;
-      padding: 1rem 2rem;
-      cursor: pointer;
-      transition: background 0.3s, color 0.3s;
-    }
-    button:hover {
-      background: #fff;
-      color: #000;
+    @keyframes explodeFade {
+      0% {
+        transform: scale(0.8) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.5) rotate(15deg);
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -90,107 +80,40 @@
 <script>
   const prompts = [
     {
-      text: "You won't help clean the ocean's plastic waste, bitch.",
+      text: "You won't help clean the oceans plastic waste, bitch.",
       link: "https://www.oceanconservancy.org/"
     },
     {
-      text: "LGBTQ+ kids are dying. But yeah, let’s not interrupt your brunch.",
-      link: "https://www.thetrevorproject.org/"
-    },
-    {
-      text: "You won't help wildfire survivors rebuild their homes you fucking wimp.",
+      text: "You’d never help these wildfire survivors rebuild their homes you fucking wimp. haha do it, you won't.",
       link: "https://globalgiving.org/projects/california-wildfire-relief-fund/"
     },
     {
-      text: "You wore a pink ribbon one time. Do something real, dickhead.",
-      link: "https://www.bcrf.org/"
-    },
-    {
-      text: "You posted a ⬛️ once. Want a fucking medal? Try actually doing something.",
-      link: "https://naacp.org/"
-    },
-    {
-      text: "You? Help feed starving kids? l.o.FUCKING.l., not a chance.",
+      text: "You? Help feed starving kids? LMAO, not a chance.",
       link: "https://www.actionagainsthunger.org/"
     },
     {
-      text: "You’re the kind of douche who’d scroll right past a burning orphanage, but donate to OnlyFans.",
-      link: "https://www.redcross.org/"
-    },
-    {
-      text: "Hope you enjoy your bullshit $6 coffee while disaster victims die.",
-      link: "https://www.directrelief.org/"
-    },
-    {
-      text: "Thoughts and prayers” don’t rebuild homes in Papua New Guinea, cunt.",
-      link: "https://www.caritas.org.au/donate/emergency-appeals/papua-new-guinea-landslide/"
-    },
-    {
-      text: "You're the reason turtles eat plastic.",
-      link: "https://www.seeturtles.org/plastic/"
-    },
-    {
-      text: "Yeah, prob wouldn’t even help a dog. Jesus.",
-      link: "https://www.humanesociety.org/"
-    },
-    {
-      text: "Bet you won't help save the rainforests, coward 🤣.",
+      text: "Bet you won't help save the rainforests, coward.",
       link: "https://www.rainforesttrust.org/"
     },
     {
-      text: "Your bitch ass would never support clean water access.",
+      text: "You won’t support clean water access. Too comfy, huh?",
       link: "https://www.charitywater.org/"
     },
     {
-      text: "Yeahhhhh ooook. Like you’d ever help rebuild Gaza hospitals.",
+      text: "Yeah right. Like you’d help rebuild Gaza hospitals.",
       link: "https://www.map.org.uk/donate/donate/"
     },
     {
-      text: "You won’t back refugee families, loser.",
+      text: "You won’t back refugee families, tough guy.",
       link: "https://donate.unhcr.org/"
     },
     {
-      text: "Bet you'd spend more time picking a shitty Netflix show than you would helping a starving child.",
-      link: "https://www.actionagainsthunger.org"
+      text: "You think you're too cool to fight malaria? Weak.",
+      link: "https://www.againstmalaria.com/"
     }
-    function tauntExplosion() {
-  const phrases = [
-    "Do it, bitch",
-    "U won't",
-    "Don't be a piece of shit",
-    "No balls",
-    "Soft little worm"
-  ];
-
-  const div = document.createElement('div');
-  div.className = 'explode-text';
-  div.textContent = phrases[Math.floor(Math.random() * phrases.length)];
-
-  // Random position on screen
-  div.style.left = `${Math.random() * window.innerWidth}px`;
-  div.style.top = `${Math.random() * window.innerHeight}px`;
-
-  // Random color
-  div.style.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
-
-  document.body.appendChild(div);
-
-  setTimeout(() => {
-    div.remove();
-  }, 1000);
- }   
   ];
 
   const tauntEl = document.getElementById('taunt');
-  let tauntExplodeInterval;
-
-tauntEl.addEventListener('mouseenter', () => {
-  tauntExplodeInterval = setInterval(tauntExplosion, 150);
-});
-
-tauntEl.addEventListener('mouseleave', () => {
-  clearInterval(tauntExplodeInterval);
-});
   const btn = document.getElementById('nextBtn');
 
   function randomPrompt() {
@@ -205,6 +128,34 @@ tauntEl.addEventListener('mouseleave', () => {
 
   btn.addEventListener('click', showNewPrompt);
   window.onload = showNewPrompt;
+
+  // Taunt Explosion Effect
+  function tauntExplosion() {
+    const phrases = [
+      "Do it, bitch",
+      "U won't",
+      "Don't be a piece of shit",
+      "Come on loser",
+      "No balls",
+    ];
+
+    const div = document.createElement('div');
+    div.className = 'explode-text';
+    div.textContent = phrases[Math.floor(Math.random() * phrases.length)];
+    div.style.left = `${Math.random() * window.innerWidth}px`;
+    div.style.top = `${Math.random() * window.innerHeight}px`;
+    div.style.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+    document.body.appendChild(div);
+    setTimeout(() => div.remove(), 1000);
+  }
+
+  let tauntExplodeInterval;
+  tauntEl.addEventListener('mouseenter', () => {
+    tauntExplodeInterval = setInterval(tauntExplosion, 150);
+  });
+  tauntEl.addEventListener('mouseleave', () => {
+    clearInterval(tauntExplodeInterval);
+  });
 </script>
 
 </body>
