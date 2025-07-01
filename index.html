@@ -45,45 +45,10 @@
       background: #fff;
       color: #000;
     }
- #fireworks-wrapper {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      display: none;
-      z-index: 9999;
-      background: rgba(0, 0, 0, 0.7);
-    }
-
-    #firework-text {
-      position: absolute;
-      top: 40%;
-      width: 100%;
-      text-align: center;
-      font-size: 3rem;
-      font-weight: bold;
-      color: #fff;
-      text-shadow: 0 0 15px #ff3b3b, 0 0 30px #fff;
-      animation: popIn 0.8s ease forwards;
-    }
-
-    @keyframes popIn {
-      0% { transform: scale(0.1); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
+ 
   </style>
 </head>
 <body>
-
-<a id="taunt" href="#" target="_blank" rel="noopener noreferrer">Loading...</a>
-<button id="nextBtn">Yeah, I won't do fuckin' shit.</button>
-
-  <div id="fireworks-wrapper">
-    <div id="firework-text">You're not a piece of shit!</div>
-    <canvas id="fireworks-canvas"></canvas>
-  </div>
 
 <script>
   const prompts = [
@@ -151,71 +116,7 @@
       text: "Bet you'd spend more time picking a shitty Netflix show than you would helping a starving child.",
       link: "https://www.actionagainsthunger.org"
     }
-    <div id="fireworks-wrapper">
-  <div id="firework-text">You're not a piece of shit!</div>
-  <canvas id="fireworks-canvas"></canvas>
-</div>
-  ];
-
-  const tauntEl = document.getElementById('taunt');
-  const btn = document.getElementById('nextBtn');
-
-  function randomPrompt() {
-    return prompts[Math.floor(Math.random() * prompts.length)];
-  }
-
-  function showNewPrompt() {
-    const prompt = randomPrompt();
-    tauntEl.textContent = prompt.text;
-    tauntEl.href = prompt.link;
-  }
-
-  btn.addEventListener('click', showNewPrompt);
-  window.onload = showNewPrompt;
-  <script>
-function launchFireworks() {
-  const wrapper = document.getElementById('fireworks-wrapper');
-  const canvas = document.getElementById('fireworks-canvas');
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  wrapper.style.display = 'block';
-
-  // Simple fireworks simulation
-  const particles = [];
-  const colors = ['#ff3b3b', '#ffcc00', '#ffffff', '#00eaff', '#ff66ff'];
-
-  for (let i = 0; i < 150; i++) {
-    particles.push({
-      x: canvas.width / 2,
-      y: canvas.height / 2,
-      vx: (Math.random() - 0.5) * 6,
-      vy: (Math.random() - 0.5) * 6,
-      alpha: 1,
-      color: colors[Math.floor(Math.random() * colors.length)]
-    });
-  }
-
-  let frame = 0;
-  function animate() {
-    frame++;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-      p.alpha -= 0.01;
-      ctx.globalAlpha = Math.max(p.alpha, 0);
-      ctx.fillStyle = p.color;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, 3, 0, 2 * Math.PI);
-      ctx.fill();
-    });
-    if (frame < 150) requestAnimationFrame(animate);
-    else setTimeout(() => wrapper.style.display = 'none', 1500);
-  }
-
-  animate();
-}
+    
 </script>
 
 </body>
