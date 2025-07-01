@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fucking Do Something</title>
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      flex-direction: column;
+      padding: 1rem;
+      margin: 0;
+      overflow: hidden;
+    }
+    #taunt {
+      font-size: 5vw;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      text-decoration: underline;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+
+    #taunt:hover {
+      color: #ff3b3b;
+      transform: scale(1.05) rotate(-1deg);
+      text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+    }
+
+    button {
+      background: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+      font-size: 1.5rem;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+    button:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    .explode-text {
+      position: fixed;
+      font-size: 2rem;
+      font-weight: bold;
+      pointer-events: none;
+      animation: explodeFade 1s ease-out forwards;
+      z-index: 9999;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    @keyframes explodeFade {
+      0% {
+        transform: scale(0.8) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.5) rotate(15deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<a id="taunt" href="#" target="_blank" rel="noopener noreferrer">Loading...</a>
+<button id="nextBtn">Yeah, I won't do shit</button>
+
+<script>
+  const prompts = [
+    {
+      text: "You won't help clean the oceans plastic waste, bitch.",
+      link: "https://www.oceanconservancy.org/"
+    },
+    {
+      text: "You’d never help these wildfire survivors rebuild their homes you fucking wimp. haha do it, you won't.",
+      link: "https://globalgiving.org/projects/california-wildfire-relief-fund/"
+    },
+    {
+      text: "You? Help feed starving kids? LMAO, not a chance.",
+      link: "https://www.actionagainsthunger.org/"
+    },
+    {
+      text: "Bet you won't help save the rainforests, coward.",
+      link: "https://www.rainforesttrust.org/"
+    },
+    {
+      text: "You won’t support clean water access. Too comfy, huh?",
+      link: "https://www.charitywater.org/"
+    },
+    {
+      text: "Yeah right. Like you’d help rebuild Gaza hospitals.",
+      link: "https://www.map.org.uk/donate/donate/"
+    },
+    {
+      text: "You won’t back refugee families, tough guy.",
+      link: "https://donate.unhcr.org/"
+    },
+    {
+      text: "You think you're too cool to fight malaria? Weak.",
+      link: "https://www.againstmalaria.com/"
+    }
+  ];
+
+  const tauntEl = document.getElementById('taunt');
+  const btn = document.getElementById('nextBtn');
+
+  function randomPrompt() {
+    return prompts[Math.floor(Math.random() * prompts.length)];
+  }
+
+  function showNewPrompt() {
+    const prompt = randomPrompt();
+    tauntEl.textContent = prompt.text;
+    tauntEl.href = prompt.link;
+  }
+
+  btn.addEventListener('click', showNewPrompt);
+  window.onload = showNewPrompt;
+
+  // Taunt Explosion Effect
+  function tauntExplosion() {
+    const phrases = [
+      "Do it, bitch",
+      "U won't",
+      "Don't be a piece of shit",
+      "Step up",
+      "Still waiting...",
+      "No balls",
+      "Coward mode"
+    ];
+
+    const div = document.createElement('div');
+    div.className = 'explode-text';
+    div.textContent = phrases[Math.floor(Math.random() * phrases.length)];
+    div.style.left = `${Math.random() * window.innerWidth}px`;
+    div.style.top = `${Math.random() * window.innerHeight}px`;
+    div.style.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+    document.body.appendChild(div);
+    setTimeout(() => div.remove(), 1000);
+  }
+
+  let tauntExplodeInterval;
+  tauntEl.addEventListener('mouseenter', () => {
+    tauntExplodeInterval = setInterval(tauntExplosion, 150);
+  });
+  tauntEl.addEventListener('mouseleave', () => {
+    clearInterval(tauntExplodeInterval);
+  });
+</script>
+
+</body>
+</html>
