@@ -19,19 +19,13 @@
       margin: 0;
     }
     #taunt {
-  font-size: 5vw;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  text-decoration: underline;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-#taunt:hover {
-  color: #ff3b3b;
-  text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
-}
+      font-size: 5vw;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      text-decoration: underline;
+      color: #fff;
+      cursor: pointer;
+    }
     button {
       background: transparent;
       border: 2px solid #fff;
@@ -45,78 +39,64 @@
       background: #fff;
       color: #000;
     }
- 
   </style>
 </head>
 <body>
 
+<a id="taunt" href="#" target="_blank" rel="noopener noreferrer">Loading...</a>
+<button id="nextBtn">Yeah, I won't do shit</button>
+
 <script>
   const prompts = [
     {
-      text: "You won't help clean the ocean's plastic waste, bitch.",
+      text: "You won't help clean the oceans plastic waste, bitch.",
       link: "https://www.oceanconservancy.org/"
     },
     {
-      text: "LGBTQ+ kids are dying. But yeah, let’s not interrupt your brunch.",
-      link: "https://www.thetrevorproject.org/"
-    },
-    {
-      text: "You won't help wildfire survivors rebuild their homes you fucking wimp.",
+      text: "You’d never help these wildfire survivors rebuild their homes you fucking wimp. haha do it, you won't.",
       link: "https://globalgiving.org/projects/california-wildfire-relief-fund/"
     },
     {
-      text: "You wore a pink ribbon one time. Do something real, dickhead.",
-      link: "https://www.bcrf.org/"
-    },
-    {
-      text: "You posted a ⬛️ once. Want a fucking medal? Try actually doing something.",
-      link: "https://naacp.org/"
-    },
-    {
-      text: "You? Help feed starving kids? l.o.FUCKING.l., not a chance.",
+      text: "You? Help feed starving kids? LMAO, not a chance.",
       link: "https://www.actionagainsthunger.org/"
     },
     {
-      text: "You’re the kind of douche who’d scroll right past a burning orphanage, but donate to OnlyFans.",
-      link: "https://www.redcross.org/"
-    },
-    {
-      text: "Hope you enjoy your bullshit $6 coffee while disaster victims die.",
-      link: "https://www.directrelief.org/"
-    },
-    {
-      text: "Thoughts and prayers” don’t rebuild homes in Papua New Guinea, cunt.",
-      link: "https://www.caritas.org.au/donate/emergency-appeals/papua-new-guinea-landslide/"
-    },
-    {
-      text: "You're the reason turtles eat plastic.",
-      link: "https://www.seeturtles.org/plastic/"
-    },
-    {
-      text: "Yeah, prob wouldn’t even help a dog. Jesus.",
-      link: "https://www.humanesociety.org/"
-    },
-    {
-      text: "Bet you won't help save the rainforests, coward 🤣.",
+      text: "Bet you won't help save the rainforests, coward.",
       link: "https://www.rainforesttrust.org/"
     },
     {
-      text: "Your bitch ass would never support clean water access.",
+      text: "You won’t support clean water access. Too comfy, huh?",
       link: "https://www.charitywater.org/"
     },
     {
-      text: "Yeahhhhh ooook. Like you’d ever help rebuild Gaza hospitals.",
+      text: "Yeah right. Like you’d help rebuild Gaza hospitals.",
       link: "https://www.map.org.uk/donate/donate/"
     },
     {
-      text: "You won’t back refugee families, loser.",
+      text: "You won’t back refugee families, tough guy.",
       link: "https://donate.unhcr.org/"
     },
     {
-      text: "Bet you'd spend more time picking a shitty Netflix show than you would helping a starving child.",
-      link: "https://www.actionagainsthunger.org"
+      text: "You think you're too cool to fight malaria? Weak.",
+      link: "https://www.againstmalaria.com/"
     }
-    
+  ];
+
+  const tauntEl = document.getElementById('taunt');
+  const btn = document.getElementById('nextBtn');
+
+  function randomPrompt() {
+    return prompts[Math.floor(Math.random() * prompts.length)];
+  }
+
+  function showNewPrompt() {
+    const prompt = randomPrompt();
+    tauntEl.textContent = prompt.text;
+    tauntEl.href = prompt.link;
+  }
+
+  btn.addEventListener('click', showNewPrompt);
+  window.onload = showNewPrompt;
 </script>
 
 </body>
