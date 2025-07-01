@@ -33,6 +33,26 @@
   transform: scale(1.05) rotate(-1deg);
   text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
 }
+    .explode-text {
+  position: fixed;
+  font-size: 2rem;
+  font-weight: bold;
+  pointer-events: none;
+  animation: explodeFade 1s ease-out forwards;
+  z-index: 9999;
+  white-space: nowrap;
+  user-select: none;
+}
+
+@keyframes explodeFade {
+  0% {
+    transform: scale(0.8) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5) rotate(15deg);
+    opacity: 0;
+  }
     }
     button {
       background: transparent;
@@ -133,6 +153,31 @@
       text: "Bet you'd spend more time picking a shitty Netflix show than you would helping a starving child.",
       link: "https://www.actionagainsthunger.org"
     }
+    function tauntExplosion() {
+  const phrases = [
+    "Do it, bitch",
+    "U won't",
+    "Don't be a piece of shit",
+    "No balls",
+    "Soft little worm"
+  ];
+
+  const div = document.createElement('div');
+  div.className = 'explode-text';
+  div.textContent = phrases[Math.floor(Math.random() * phrases.length)];
+
+  // Random position on screen
+  div.style.left = `${Math.random() * window.innerWidth}px`;
+  div.style.top = `${Math.random() * window.innerHeight}px`;
+
+  // Random color
+  div.style.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+
+  document.body.appendChild(div);
+
+  setTimeout(() => {
+    div.remove();
+  }, 1000);
   ];
 
   const tauntEl = document.getElementById('taunt');
