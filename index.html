@@ -178,9 +178,19 @@
   setTimeout(() => {
     div.remove();
   }, 1000);
+ }   
   ];
 
   const tauntEl = document.getElementById('taunt');
+  let tauntExplodeInterval;
+
+tauntEl.addEventListener('mouseenter', () => {
+  tauntExplodeInterval = setInterval(tauntExplosion, 150);
+});
+
+tauntEl.addEventListener('mouseleave', () => {
+  clearInterval(tauntExplodeInterval);
+});
   const btn = document.getElementById('nextBtn');
 
   function randomPrompt() {
