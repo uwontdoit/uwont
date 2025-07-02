@@ -16,7 +16,7 @@
       text-align: center;
       flex-direction: column;
       padding: 1rem;
-      margin: 3;
+      margin: 5;
       overflow: hidden;
     }
     #taunt {
@@ -110,7 +110,7 @@
       link: "https://www.directrelief.org/"
     },
     {
-      text: "Thoughts and prayers don’t rebuild homes in Papua New Guinea, cunt.",
+      text: "Thoughts and prayers” don’t rebuild homes in Papua New Guinea, cunt.",
       link: "https://www.caritas.org.au/donate/emergency-appeals/papua-new-guinea-landslide/"
     },
     {
@@ -177,34 +177,6 @@
       "Coward",
       "No balls",
     ];
-    function spawnGifExplosion() {
-  const gifUrls = [
-    "https://tenor.com/9UZu.gif",  // kevin hart
-    "https://media.giphy.com/media/26tknCqiJrBQG6bxC/giphy.gif",  // mind blown
-    "https://media.giphy.com/media/l2Sqb8i8jE1M1TDh6/giphy.gif",  // judgmental
-    "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",      // angry cat
-    "https://media.giphy.com/media/fdLRDjnhz1ZQc/giphy.gif"       // facepalm
-  ];
-
-  const img = document.createElement('img');
-  img.src = gifUrls[Math.floor(Math.random() * gifUrls.length)];
-  img.style.position = 'fixed';
-  img.style.width = '100px';
-  img.style.height = '100px';
-  img.style.left = `${Math.random() * (window.innerWidth - 100)}px`;
-  img.style.top = `${Math.random() * (window.innerHeight - 100)}px`;
-  img.style.zIndex = 9999;
-  img.style.pointerEvents = 'none';
-  img.style.opacity = '1';
-  img.style.transition = 'opacity 1s ease-out';
-
-  document.body.appendChild(img);
-
-  setTimeout(() => {
-    img.style.opacity = '0';
-    setTimeout(() => img.remove(), 1000);
-  }, 300);
-}
 
     const div = document.createElement('div');
     div.className = 'explode-text';
@@ -218,13 +190,11 @@
 
   let tauntExplodeInterval;
   tauntEl.addEventListener('mouseenter', () => {
-  tauntExplodeInterval = setInterval(() => {
-    tauntExplosion();
-    if (Math.random() < 0.3) { // 30% chance each tick
-      spawnGifExplosion();
-    }
-  }, 150);
-});
+    tauntExplodeInterval = setInterval(tauntExplosion, 150);
+  });
+  tauntEl.addEventListener('mouseleave', () => {
+    clearInterval(tauntExplodeInterval);
+  });
 </script>
 
 </body>
