@@ -74,6 +74,12 @@
 
 <a id="taunt" href="#" target="_blank" rel="noopener noreferrer">Loading...</a>
 <button id="nextBtn">Yeah, I won't do shit</button>
+  <button id="iDonatedBtn">I Actually Donated (No, Really)</button>
+
+<div id="bragShare" style="display:none; margin-top: 2rem;">
+  <p>I donated. Unlike the rest of the fucking world.</p>
+  <a id="tweetBtn" target="_blank">🗣️ Brag on Twitter</a>
+</div>
 
 <script>
   const prompts = [
@@ -145,6 +151,7 @@
 
   const tauntEl = document.getElementById('taunt');
   const btn = document.getElementById('nextBtn');
+  const iDonatedBtn = document.getElementById('iDonatedBtn');
 
   function randomPrompt() {
     return prompts[Math.floor(Math.random() * prompts.length)];
@@ -195,7 +202,24 @@
   tauntEl.addEventListener('mouseleave', () => {
     clearInterval(tauntExplodeInterval);
   });
-</script>
+  function launchFireworks() {
+    for (let i = 0; i < 30; i++) {
+      tauntExplosion();
+    }
+  }
 
+  function showBragShare() {
+    const msg = encodeURIComponent("I’m not a piece of shit. I actually donated. Unlike the rest of the world doing fuck-all.");
+    const url = encodeURIComponent(window.location.href);
+    const tweet = `https://twitter.com/intent/tweet?text=${msg}&url=${url}`;
+    document.getElementById('tweetBtn').href = tweet;
+    document.getElementById('bragShare').style.display = 'block';
+  }
+
+  iDonatedBtn.addEventListener('click', () => {
+    launchFireworks();
+    showBragShare();
+  });
+</script>
 </body>
 </html>
